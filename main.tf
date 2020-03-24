@@ -1,24 +1,13 @@
 # Configure the Azure Provider
 # Values can be found by az login / az account get-access-token
 provider "azurerm" {
+    version = "=1.28.0"
+
   client_id = "${var.client_id}"
   subscription_id = "${var.subscription_id}"
   tenant_id = "${var.tenant_id}"
 }
-# Create a resource group
 
-variable "cluster_name" {
-  type    = "string"
-  default = "SLBAutomation"
-}
-variable "admin_name" {
-  type    = "string"
-  default = "masteradmin"
-}
-variable "admin_password" {
-  type    = "string"
-  default = "Temp1234!"
-}
 #Random 5 char string appended to the end of each name to avoid conflicts
 resource "random_string" "random_name_post" {
   length           = 5
@@ -28,10 +17,10 @@ resource "random_string" "random_name_post" {
 }
 resource "azurerm_resource_group" "resource_group" {
   name     = "${var.cluster_name}-rsg-${random_string.random_name_post.result}"
-  location = "West US"
+  location = "${var.region}"
 }
 # Create a virtual network within the resource group
-resource "azurerm_virtual_network" "test" {
+resource "azurerm_virtual_network" "external_network" {
   name                = "${var.cluster_name}-vpc-${random_string.random_name_post.result}"
   resource_group_name = "${azurerm_resource_group.resource_group.name}"
   location            = "${azurerm_resource_group.resource_group.location}"
@@ -40,12 +29,12 @@ resource "azurerm_virtual_network" "test" {
 resource "azurerm_subnet" "internal" {
   name                 = "internal"
   resource_group_name  = "${azurerm_resource_group.resource_group.name}"
-  virtual_network_name = "${azurerm_virtual_network.test.name}"
+  virtual_network_name = "${azurerm_virtual_network.external_network.name}"
   address_prefix       = "10.0.2.0/24"
 }
 
 resource "azurerm_network_interface" "main" {
-  name                = "${var.cluster_name}-nic-${random_string.random_namdie_post.result}"
+  name                = "${var.cluster_name}-nic-${random_string.random_name_post.result}"
   location            = "${azurerm_resource_group.resource_group.location}"
   resource_group_name = "${azurerm_resource_group.resource_group.name}"
 
@@ -100,29 +89,7 @@ resource "azurerm_public_ip" "public_ip" {
   resource_group_name = "${azurerm_resource_group.resource_group.name}"
   allocation_method   = "Static"
 }
- ####SLB Resources ###
-resource "azurerm_public_ip" "public_ip_elb" {
-  name                = "PublicIPForLB"
-  location            = "West US"
-  resource_group_name = "${azurerm_resource_group.resource_group.name}"
-  allocation_method   = "Static"
-}
 
-resource "azurerm_lb" "external" {
-  name                = "${var.cluster_name}-externalSLB-${random_string.random_name_post.result}"
-  location            = "West US"
-  resource_group_name = "${azurerm_resource_group.resource_group.name}"
-
-  frontend_ip_configuration {
-    name                 = "PublicIPAddress"
-    public_ip_address_id = "${azurerm_public_ip.public_ip_elb.id}"
-  }
-}
-resource "azurerm_lb" "internal" {
-  name                = "${var.cluster_name}-internalSLB-${random_string.random_name_post.result}"
-  location            = "West US"
-  resource_group_name = "${azurerm_resource_group.resource_group.name}"
-}
 output "ResourceGroup" {
   value = "${azurerm_resource_group.resource_group.id}"
 }
