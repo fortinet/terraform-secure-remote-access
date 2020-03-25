@@ -26,3 +26,7 @@ variable "admin_password" {
   type    = "string"
   default = "Temp1234!"
 }
+variable "psk_key" {
+  type    = "string"
+  default = "123456789"
+}

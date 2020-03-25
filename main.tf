@@ -73,19 +73,19 @@ resource "azurerm_virtual_machine" "main" {
     managed_disk_type = "Standard_LRS"
   }
     os_profile {
-    computer_name  = "hostname"
+    computer_name  = "FortiGateSecureAccess"
     admin_username = "${var.admin_name}"
     admin_password =  "${var.admin_password}"
+    custom_data  = "${data.template_file.setupFortiGate.rendered}"
   }
     os_profile_linux_config {
     disable_password_authentication = false
   }
 
-  ####SLB Resources ###
 }
 resource "azurerm_public_ip" "public_ip" {
   name                = "PublicIPForFortiGate"
-  location            = "West US"
+  location            = "${var.region}"
   resource_group_name = "${azurerm_resource_group.resource_group.name}"
   allocation_method   = "Static"
 }
