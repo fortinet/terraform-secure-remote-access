@@ -34,8 +34,8 @@ config firewall address
     edit "SSLVPN_TUNNEL_ADDR1"
         set type iprange
         set associated-interface "ssl.root"
-        set start-ip 10.212.134.200
-        set end-ip 10.212.134.210
+        set start-ip ${ssl_tunnel_start_ip}
+        set end-ip ${ssl_tunnel_end_ip}
     next
     edit "SecureHub_local_subnet_1"
         set allow-routing enable

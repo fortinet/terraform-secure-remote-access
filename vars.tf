@@ -39,3 +39,12 @@ variable "remote_subnet_netmask" {
   type    = "string"
   default = "255.255.255.0"
 }
+# Start and End IP of the tunnel. This will determine how many users can connect.
+variable "ssl_tunnel_start_ip" {
+  type    = "string"
+  default = "10.212.134.200"
+}
+variable "ssl_tunnel_end_ip" {
+  type    = "string"
+  default = "10.212.134.210"
+}
