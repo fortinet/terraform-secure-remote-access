@@ -1,8 +1,7 @@
 # Configure the Azure Provider
 # Values can be found by az login / az account get-access-token
 provider "azurerm" {
-    version = "=1.28.0"
-
+  version = "=1.44.0"
   client_id = "${var.client_id}"
   subscription_id = "${var.subscription_id}"
   tenant_id = "${var.tenant_id}"
