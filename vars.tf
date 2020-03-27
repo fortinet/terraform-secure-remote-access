@@ -30,3 +30,12 @@ variable "psk_key" {
   type    = "string"
   default = "123456789"
 }
+# Subnet of the office or home network spoke
+variable "remote_subnet" {
+  type    = "string"
+  default = "10.100.81.0"
+}
+variable "remote_subnet_netmask" {
+  type    = "string"
+  default = "255.255.255.0"
+}

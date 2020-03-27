@@ -42,7 +42,7 @@ config firewall address
         set subnet 10.0.2.0 255.255.255.0
     next
     edit "RemoteSubnet"
-        set subnet 10.100.81.0 255.255.255.0
+        set subnet ${remote_subnet} ${remote_subnet_netmask}
     next
 end
 config firewall addrgrp
