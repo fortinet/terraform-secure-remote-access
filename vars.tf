@@ -48,3 +48,16 @@ variable "ssl_tunnel_end_ip" {
   type    = "string"
   default = "10.212.134.210"
 }
+variable "set_bgp_remote_as" {
+  type = "string"
+  default = "65400"
+}
+# Set the BGP route for the tunnel network.
+variable "ssl_tunnel_bgp_network_prefix" {
+  type    = "string"
+  default = "10.212.134.0"
+}
+variable "ssl_tunnel_bgp_network_netmask" {
+  type    = "string"
+  default = "255.255.255.0"
+}
