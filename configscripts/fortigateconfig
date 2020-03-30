@@ -57,7 +57,7 @@ config vpn ipsec phase1-interface
         set type dynamic
         set interface "port1"
         set peertype any
-        set net-device disable
+        set net-device enabled
         set proposal aes128-sha256 aes256-sha256 aes128-sha1 aes256-sha1
         set add-route disable
         set dpd on-idle
