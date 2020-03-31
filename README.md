@@ -21,9 +21,35 @@ Once the terraform deployment is complete, follow the steps below to attach the 
 1. Navigate to your spoke FortiGate and open VPN->IPsec Wizard.
 2. Choose a Name for the spoke and choose `Hub-and-Spoke` Template type.
    Under role ensure Spoke is selected. Click next and you will be brought to the authentication tab.
-3. Under Remote IP Address enter the Public IP of the FortiGate you deployed, this should be in the outputs. You can also run `terraform output` in the deployment folder to see the results again.
-4. The Outgoing interface should adjust automatically based on the Remote IP address entered.
-5. Enter the Pre-shared key. This can be found in the vars.tf file under `psk_key`
+
+### Authentication:
+
+1. Under Remote IP Address enter the Public IP of the FortiGate you deployed, this should be in the outputs. You can also run `terraform output` in the deployment folder to see the results again.
+2. The Outgoing interface should adjust automatically based on the Remote IP address entered.
+3. Enter the Pre-shared key. This can be found in the vars.tf file under `psk_key`
+
+   ![FortiOS Admin Profile](./imgs/step_2_auth.png)
+
+### Tunnel Interface:
+
+1. Select an IP for the SSL VPN tunnel interface.
+2. Input the HUB tunnel IP and netmask
+
+   ![FortiOS Admin Profile](./imgs/step_3_tunnel_interface.png)
+
+### Policy & Routing
+
+1.  Select the local interface, and inpiut the local subnet.
+2.  Click create and the VPN wizard should finalize.
+
+    ![FortiOS Admin Profile](./imgs/step_4_policy_routing.png)
+
+### Bring UP phase selectors
+
+1. Navigate to Monitor -> IPsec Monitor
+2. Select the new VPN and bring up the connection
+
+   ![FortiOS Admin Profile](./imgs/bring_up_phase_selectors.png)
 
 # Support
 
