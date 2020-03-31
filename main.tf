@@ -101,3 +101,8 @@ output "AdminPassword" {
 output "AdminName" {
   value ="${var.admin_name}"
 }
+
+output "EasyKey" {
+  value = base64encode("${data.template_file.easy_key_setup.rendered}")
+  description = "Use this key to in the Spoke setup to generate the VPN config."
+}
