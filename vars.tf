@@ -75,7 +75,7 @@ variable "hub_tunnel_netmask" {
 #Spoke tunnel IP
 variable "spoke_tunnel_ip" {
   type = "string"
-  default = "10.10.1.2"
+  default = "10.10.1.3"
 }
 variable "spoke_tunnel_netmask" {
   type = "string"

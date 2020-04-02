@@ -9,7 +9,7 @@ config system interface
         set ip ${hub_tunnel_ip} ${hub_tunnel_netmask}
         set allowaccess ping
         set type tunnel
-        set remote-ip ${spoke_tunnel_ip} 255.255.255.0
+        set remote-ip 10.10.1.2 255.255.255.0
         set snmp-index 3
         set interface "port1"
     next
