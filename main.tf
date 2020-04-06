@@ -54,7 +54,7 @@ resource "azurerm_virtual_machine" "main" {
   vm_size               = "Standard_DS1_v2"
   delete_os_disk_on_termination = true
   plan {
-    name = "fortinet_fg-vm_payg_20190624" //"fortinet_fg-vm" //Pay as you go: "fortinet_fg-vm_payg_20190624"
+    name = "fortinet_fg-vm_payg_20190624"
     publisher = "fortinet"
     product = "fortinet_fortigate-vm_v5"
   }
@@ -62,8 +62,8 @@ resource "azurerm_virtual_machine" "main" {
   storage_image_reference {
     publisher = "fortinet"
     offer     = "fortinet_fortigate-vm_v5"
-    sku       =  "fortinet_fg-vm_payg_20190624" //"fortinet_fg-vm" //Pay as you go: "fortinet_fg-vm_payg_20190624"M
-    version   = "latest"
+    sku       =  "fortinet_fg-vm_payg_20190624"
+    version   = "6.2.3"
   }
     storage_os_disk {
     name              = "osdisk1"

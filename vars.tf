@@ -81,21 +81,3 @@ variable "spoke_tunnel_netmask" {
   type = "string"
   default = "255.255.255.0"
 }
-
-# locals {
-#   service_name = "forum"
-#   owner        = "Community Team"
-# }
-
-
-# locals {
-#   easy_key = {
-#     hubGatewayIp : azurerm_public_ip.public_ip.ip_address,
-#     hubTunnel : "x",
-#     hubIndentifier: "x",
-#     indentifier: "x",
-#     tunnelIp: "x"
-#   }
-#   toString = tostring(local.easy_key)
-#   base64 = base64encode(local.toString)
-# }

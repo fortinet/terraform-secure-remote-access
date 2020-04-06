@@ -4,7 +4,7 @@ FortiGate Secure Remote access with terraform
 
 > This Script requires the azure cli for information on downloading it see the following link: https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest
 
-1. login to azure with `az login`<br>
+1. Login to azure with `az login`<br>
 2. Add your Client ID, Subscription ID and Tenant ID to the terraform vars file<br>
 3. Adjust the `remote_subnet` and `remote_subnet_netmask` vars to your work/home fortigate subnet range. The current default is 10.100.81.0
 4. Run `terraform init`<br>
@@ -12,7 +12,9 @@ FortiGate Secure Remote access with terraform
 
 To navigate to your deployed FortiGate use the PublicIP and the default admin port is 8443
 
-The default admin and password can be found under vars.tf under `admin_name` and `admin_password`
+The default admin and password can be found under vars.tf under `admin_name` and `admin_password` <br>
+
+<i>Note: <b>EasyKey</b> from the output will contain configuration that can be applied to Spoke VPN device for ease of configuration </i>
 
 # Spoke FortiGate Setup
 
@@ -20,7 +22,11 @@ Once the terraform deployment is complete, follow the steps below to attach the 
 
 1. Navigate to your spoke FortiGate and open VPN->IPsec Wizard.
 2. Choose a Name for the spoke and choose `Hub-and-Spoke` Template type.
-   Under role ensure Spoke is selected. Click next and you will be brought to the authentication tab.
+3. Under role ensure Spoke is selected. Click next and you will be brought to the authentication tab. <br>
+
+<i>Note: Enter <b>EasyKey</b> from `terraform output` and hit apply to pre-fill required fields (except Pre-shared key, Local interface, Local subnets) </i><br>
+
+![FortiOS Admin Profile](./imgs/easy_key.png)
 
 ### Authentication:
 
@@ -28,7 +34,9 @@ Once the terraform deployment is complete, follow the steps below to attach the 
 2. The Outgoing interface should adjust automatically based on the Remote IP address entered.
 3. Enter the Pre-shared key. This can be found in the vars.tf file under `psk_key`
 
-   ![FortiOS Admin Profile](./imgs/step_2_auth.png)
+For <i>EasyKey</i> setup, only the Pre-shared key needs to be entered
+
+![FortiOS Admin Profile](./imgs/step_2_auth.png)
 
 ### Tunnel Interface:
 
@@ -39,7 +47,7 @@ Once the terraform deployment is complete, follow the steps below to attach the 
 
 ### Policy & Routing
 
-1.  Select the local interface, and inpiut the local subnet.
+1.  Select the local interface, and input the local subnet.
 2.  Click create and the VPN wizard should finalize.
 
     ![FortiOS Admin Profile](./imgs/step_4_policy_routing.png)
