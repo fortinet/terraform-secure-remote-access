@@ -1,4 +1,4 @@
-FortiGate Secure Remote access with Terraform.
+FortiGate secure remote access with Terraform beta release.
 
 # Deployment
 
@@ -18,7 +18,7 @@ The default admin username and password can be found in vars.tf under `admin_nam
 
 # Spoke FortiGate Setup
 
-Once the terraform deployment is complete, follow the steps below to attach the spoke to the FortiGate Hub
+Once the Terraform deployment is complete, follow the steps below to attach the spoke to the FortiGate Hub
 
 1. Navigate to your spoke FortiGate and open **VPN > IPsec Wizard**.
 2. Enter a **Name** for the spoke.
@@ -34,8 +34,8 @@ Once the terraform deployment is complete, follow the steps below to attach the 
 
 1.Under **Remote IP Address** enter the Public IP address of the FortiGate you deployed. You can find this value in the outputs. You can also run `terraform output` in the deployment folder to see the results again.
 
-2. The Outgoing interface should adjust automatically based on the Remote IP address entered.
-3. Enter the Pre-shared key. This can be found in the vars.tf file under `psk_key`.
+2. The **Outgoing interface** should adjust automatically based on the **Remote IP address** entered.
+3. Enter the **Pre-shared key**. This can be found in the vars.tf file under `psk_key`.
 
 For <i>EasyKey</i> setup, only the Pre-shared key needs to be entered.
 
@@ -55,7 +55,7 @@ For <i>EasyKey</i> setup, only the Pre-shared key needs to be entered.
 
     ![FortiOS Admin Profile](./imgs/step_4_policy_routing.png)
 
-### Bring Up phase selectors
+### Bring Up Phase Selectors
 
 1. Navigate to **Monitor > IPsec Monitor.**
 2. Select the new VPN and bring up the connection.
