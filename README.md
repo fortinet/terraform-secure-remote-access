@@ -1,16 +1,16 @@
-FortiGate Secure Remote access with terraform
+FortiGate Secure Remote access with Terraform
 
 # Deployment
 
 > This Script requires the Azure CLI for information on downloading it see the following link: https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest
 
 1. Login to Azure with `az login`.<br>
-2. Add your Client ID, Subscription ID and Tenant ID to the terraform vars.tf.<br>
+2. Add your Client ID, Subscription ID and Tenant ID to the Terraform vars.tf.<br>
 3. Adjust the `remote_subnet` and `remote_subnet_netmask` vars to your work/home FortiGate subnet range. The current default is 10.100.81.0.
 4. Run `terraform init`.<br>
 5. Run `terraform apply`.<br>
 
-To navigate to your deployed FortiGate use the PublicIP and the default admin port of 8443.
+To navigate to your deployed FortiGate use the Public IP address and the default admin port of 8443.
 
 The default admin and password can be found under vars.tf under `admin_name` and `admin_password` <br>
 
@@ -20,7 +20,7 @@ The default admin and password can be found under vars.tf under `admin_name` and
 
 Once the terraform deployment is complete, follow the steps below to attach the spoke to the FortiGate HUB
 
-1. Navigate to your spoke FortiGate and open VPN->IPsec Wizard.
+1. Navigate to your spoke FortiGate and open **VPN > IPsec Wizard**.
 2. Enter a **Name** for the spoke.
 3. For **Template type**, select `Hub-and-Spoke`.
 4. Under **Role**, ensure `Spoke` is selected.
@@ -32,18 +32,18 @@ Once the terraform deployment is complete, follow the steps below to attach the 
 
 ### Authentication:
 
-1. Under Remote IP Address enter the Public IP address of the FortiGate you deployed, this should be in the outputs. You can also run `terraform output` in the deployment folder to see the results again.
+1. Under **Remote IP Address** enter the Public IP address of the FortiGate you deployed, this should be in the outputs. You can also run `terraform output` in the deployment folder to see the results again.
 2. The Outgoing interface should adjust automatically based on the Remote IP address entered.
-3. Enter the Pre-shared key. This can be found in the vars.tf file under `psk_key`
+3. Enter the Pre-shared key. This can be found in the vars.tf file under `psk_key`.
 
-For <i>EasyKey</i> setup, only the Pre-shared key needs to be entered
+For <i>EasyKey</i> setup, only the Pre-shared key needs to be entered.
 
 ![FortiOS Admin Profile](./imgs/step_2_auth.png)
 
 ### Tunnel Interface:
 
-1. Select an IP for the SSL VPN tunnel interface.
-2. Input the HUB tunnel IP and netmask
+1. Select an IP address for the SSL VPN tunnel interface.
+2. Input the hub tunnel IP address and netmask
 
    ![FortiOS Admin Profile](./imgs/step_3_tunnel_interface.png)
 
@@ -57,8 +57,8 @@ For <i>EasyKey</i> setup, only the Pre-shared key needs to be entered
 
 ### Bring UP phase selectors
 
-1. Navigate to Monitor -> IPsec Monitor
-2. Select the new VPN and bring up the connection
+1. Navigate to **Monitor > IPsec Monitor.**
+2. Select the new VPN and bring up the connection.
 
    ![FortiOS Admin Profile](./imgs/bring_up_phase_selectors.png)
 
