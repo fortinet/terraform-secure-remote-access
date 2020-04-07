@@ -55,7 +55,7 @@ For <i>EasyKey</i> setup, only the Pre-shared key needs to be entered.
 
         ![FortiOS Admin Profile](./imgs/step_4_policy_routing.png)
 
-### Bring UP phase selectors
+### Bring Up phase selectors
 
 1. Navigate to **Monitor > IPsec Monitor.**
 2. Select the new VPN and bring up the connection.
