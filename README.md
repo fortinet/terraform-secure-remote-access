@@ -1,12 +1,12 @@
-FortiGate Secure Remote access with Terraform
+FortiGate Secure Remote access with Terraform.
 
 # Deployment
 
-> This Script requires the Azure CLI for information on downloading it see the following link: https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest
+> This script requires the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 1. Login to Azure with `az login`.<br>
 2. Add your Client ID, Subscription ID and Tenant ID to the Terraform vars.tf.<br>
-3. Adjust the `remote_subnet` and `remote_subnet_netmask` variables to that of your work/home FortiGate subnet range. The default value is `10.100.81.0`.
+3. Adjust the `remote_subnet` and `remote_subnet_netmask` variables to that of your spoke FortiGate subnet range. The default value is `10.100.81.0`.
 4. Run `terraform init`.<br>
 5. Run `terraform apply`.<br>
 
@@ -14,11 +14,11 @@ To navigate to your deployed FortiGate use the Public IP address and the default
 
 The default admin username and password can be found in vars.tf under `admin_name` and `admin_password`. <br>
 
-<i>Note: <b>EasyKey</b> from the output will contain configuration that can be applied to Spoke VPN device for ease of configuration </i>
+<i>Note: <b>EasyKey</b> from the output will contain configuration that can be applied to Spoke VPN devices for ease of configuration. </i>
 
 # Spoke FortiGate Setup
 
-Once the terraform deployment is complete, follow the steps below to attach the spoke to the FortiGate HUB
+Once the terraform deployment is complete, follow the steps below to attach the spoke to the FortiGate Hub
 
 1. Navigate to your spoke FortiGate and open **VPN > IPsec Wizard**.
 2. Enter a **Name** for the spoke.
@@ -26,13 +26,14 @@ Once the terraform deployment is complete, follow the steps below to attach the 
 4. Under **Role**, ensure `Spoke` is selected.
 5. Click **Next** and you will be brought to the Authentication tab.
 
-<i>Note: Enter <b>EasyKey</b> from `terraform output` and click **Apply** to pre-fill required fields (with the exception of Pre-shared key, Local interface, and Local subnets). </i><br>
+<i>Note: Enter **EasyKey** from the output will contain configuration that can be applied to Spoke VPN devices for ease of configuration.</i><br>
 
 ![FortiOS Admin Profile](./imgs/easy_key.png)
 
 ### Authentication:
 
-1. Under **Remote IP Address** enter the Public IP address of the FortiGate you deployed, this should be in the outputs. You can also run `terraform output` in the deployment folder to see the results again.
+1.Under **Remote IP Address** enter the Public IP address of the FortiGate you deployed. You can find this value in the outputs. You can also run `terraform output` in the deployment folder to see the results again.
+
 2. The Outgoing interface should adjust automatically based on the Remote IP address entered.
 3. Enter the Pre-shared key. This can be found in the vars.tf file under `psk_key`.
 
@@ -43,17 +44,17 @@ For <i>EasyKey</i> setup, only the Pre-shared key needs to be entered.
 ### Tunnel Interface:
 
 1. Select an IP address for the SSL VPN tunnel interface.
-2. Input the hub tunnel IP address and netmask
+2. Input the hub tunnel IP address and netmask.
 
    ![FortiOS Admin Profile](./imgs/step_3_tunnel_interface.png)
 
 ### Policy & Routing
 
 1.  Select an IP address for the SSL VPN tunnel interface.
-2.  Input the HUB tunnel IP address and netmask.
+2.  Input the Hub tunnel IP address and netmask.
 3.  Click **Create** and the VPN wizard should finalize.
 
-        ![FortiOS Admin Profile](./imgs/step_4_policy_routing.png)
+    ![FortiOS Admin Profile](./imgs/step_4_policy_routing.png)
 
 ### Bring Up phase selectors
 
