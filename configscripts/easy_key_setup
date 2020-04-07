@@ -1,0 +1,7 @@
+{
+"hubGatewayIp" : "${hubGatewayIp}",
+"hubTunnel" : "${hub_tunnel_ip}",
+"hubIndentifier": "${hubIndentifier}",
+"indentifier": "${indentifier}",
+"tunnelIp": "${tunnelIp}"
+}
