@@ -50,9 +50,8 @@ For <i>EasyKey</i> setup, only the Pre-shared key needs to be entered.
 
 ### Policy & Routing
 
-1.  Select an IP address for the SSL VPN tunnel interface.
-2.  Input the Hub tunnel IP address and netmask.
-3.  Click **Create** and the VPN wizard should finalize.
+1.  Select the local interface, and input the local subnet.
+2.  Click **Create** and the VPN wizard should finalize.
 
     ![FortiOS Admin Profile](./imgs/step_4_policy_routing.png)
 
