@@ -26,7 +26,7 @@ Once the terraform deployment is complete, follow the steps below to attach the 
 4. Under **Role**, ensure `Spoke` is selected.
 5. Click **Next** and you will be brought to the Authentication tab.
 
-<i>Note: Enter <b>EasyKey</b> from `terraform output` and hit apply to pre-fill required fields (except Pre-shared key, Local interface, Local subnets) </i><br>
+<i>Note: Enter <b>EasyKey</b> from `terraform output` and click **Apply** to pre-fill required fields (with the exception of Pre-shared key, Local interface, and Local subnets). </i><br>
 
 ![FortiOS Admin Profile](./imgs/easy_key.png)
 
