@@ -6,13 +6,13 @@ FortiGate Secure Remote access with Terraform
 
 1. Login to Azure with `az login`.<br>
 2. Add your Client ID, Subscription ID and Tenant ID to the Terraform vars.tf.<br>
-3. Adjust the `remote_subnet` and `remote_subnet_netmask` vars to your work/home FortiGate subnet range. The current default is 10.100.81.0.
+3. Adjust the `remote_subnet` and `remote_subnet_netmask` variables to that of your work/home FortiGate subnet range. The default value is `10.100.81.0`.
 4. Run `terraform init`.<br>
 5. Run `terraform apply`.<br>
 
 To navigate to your deployed FortiGate use the Public IP address and the default admin port of 8443.
 
-The default admin and password can be found under vars.tf under `admin_name` and `admin_password` <br>
+The default admin username and password can be found in vars.tf under `admin_name` and `admin_password`. <br>
 
 <i>Note: <b>EasyKey</b> from the output will contain configuration that can be applied to Spoke VPN device for ease of configuration </i>
 
