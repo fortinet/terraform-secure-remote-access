@@ -23,7 +23,6 @@ resource "azurerm_virtual_network" "external_network" {
   name                = "${var.cluster_name}-vpc-${random_string.random_name_post.result}"
   resource_group_name = azurerm_resource_group.resource_group.name
   location            = azurerm_resource_group.resource_group.location
-  // address_space       = ["10.0.0.0/16"]
   address_space = var.external_address_space
 }
 resource "azurerm_subnet" "internal" {
