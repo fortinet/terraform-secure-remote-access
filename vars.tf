@@ -1,83 +1,89 @@
 variable "client_id" {
-  type    = string
-  default = ""
+  type = string
 }
 variable "subscription_id" {
-  type    = string
-  default = ""
+  type = string
 }
 variable "tenant_id" {
-  type    = string
-  default = ""
+  type = string
 }
 variable "region" {
-  type    = string
-  default = "West US"
+  type = string
 }
 variable "cluster_name" {
-  type    = string
-  default = "fortigate-secure-remote-access"
+  type = string
 }
 variable "admin_name" {
-  type    = string
-  default = "masteradmin"
+  type = string
 }
 variable "admin_password" {
-  type    = string
-  default = "Temp1234!"
+  type = string
 }
 variable "psk_key" {
-  type    = string
-  default = "123456789"
+  type = string
 }
 # Subnet of the office or home network spoke
 variable "remote_subnet" {
-  type    = string
-  default = "10.100.81.0"
+  type = string
 }
 variable "remote_subnet_netmask" {
-  type    = string
-  default = "255.55.255.0"
+  type = string
 }
 # Start and End IP of the tunnel. This will determine how many users can connect.
 variable "ssl_tunnel_start_ip" {
-  type    = string
-  default = "10.212.134.200"
+  type = string
 }
 variable "ssl_tunnel_end_ip" {
-  type    = string
-  default = "10.212.134.210"
+  type = string
 }
 variable "set_bgp_remote_as" {
-  type    = string
-  default = "65400"
+  type = string
 }
 # Set the BGP route for the tunnel network.
 variable "ssl_tunnel_bgp_network_prefix" {
-  type    = string
-  default = "10.212.134.0"
+  type = string
 }
 variable "ssl_tunnel_bgp_network_netmask" {
-  type    = string
-  default = "255.255.255.0"
+  type = string
 }
 
 #Hub Tunnel Interface IP
 variable "hub_tunnel_ip" {
-  type    = string
-  default = "10.10.1.1"
+  type = string
 }
 variable "hub_tunnel_netmask" {
-  type    = string
-  default = "255.255.255.255"
+  type = string
 }
 
 #Spoke tunnel IP
 variable "spoke_tunnel_ip" {
-  type    = string
-  default = "10.10.1.3"
+  type = string
 }
 variable "spoke_tunnel_netmask" {
-  type    = string
-  default = "255.255.255.0"
+  type = string
 }
+
+variable "external_address_space" {
+  type = list(string)
+}
+
+variable "internal_address_prefix" {
+  type = string
+}
+
+variable "hub_vm_size" {
+  type = string
+}
+
+variable "fgt_sku" {
+  type = string
+}
+
+variable "fgt_product" {
+  type = string
+}
+
+variable "fgt_version" {
+  type = string
+}
+
