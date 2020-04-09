@@ -23,7 +23,7 @@ resource "azurerm_virtual_network" "external_network" {
   name                = "${var.cluster_name}-vpc-${random_string.random_name_post.result}"
   resource_group_name = azurerm_resource_group.resource_group.name
   location            = azurerm_resource_group.resource_group.location
-  address_space       = ["10.0.0.0/16"]
+  address_space = var.external_address_space
 }
 resource "azurerm_subnet" "internal" {
   name                 = "internal"
@@ -46,24 +46,24 @@ resource "azurerm_network_interface" "main" {
   }
 }
 
-resource "azurerm_virtual_machine" "main" {
+resource "azurerm_virtual_machine" "fgt-hub" {
   name                          = "${var.cluster_name}-vm-${random_string.random_name_post.result}"
   location                      = azurerm_resource_group.resource_group.location
   resource_group_name           = azurerm_resource_group.resource_group.name
   network_interface_ids         = ["${azurerm_network_interface.main.id}"]
-  vm_size                       = "Standard_DS1_v2"
+  vm_size                       = var.hub_vm_size
   delete_os_disk_on_termination = true
   plan {
-    name      = "fortinet_fg-vm_payg_20190624"
+    name      = var.fgt_sku
     publisher = "fortinet"
-    product   = "fortinet_fortigate-vm_v5"
+    product   = var.fgt_product
   }
 
   storage_image_reference {
     publisher = "fortinet"
-    offer     = "fortinet_fortigate-vm_v5"
-    sku       = "fortinet_fg-vm_payg_20190624"
-    version   = "6.2.3"
+    offer     = var.fgt_product
+    sku       = var.fgt_sku
+    version   = var.fgt_version
   }
   storage_os_disk {
     name              = "osdisk1"
@@ -90,10 +90,10 @@ resource "azurerm_public_ip" "public_ip" {
 }
 
 output "ResourceGroup" {
-  value = azurerm_resource_group.resource_group.id
+  value = azurerm_resource_group.resource_group.name
 }
 output "PublicIP" {
-  value = azurerm_public_ip.public_ip.ip_address
+  value = "${join("", list("https://", "${azurerm_public_ip.public_ip.ip_address}", ":8443"))}"
 }
 output "AdminPassword" {
   value = var.admin_password
