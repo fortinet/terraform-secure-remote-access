@@ -2,9 +2,9 @@
 # Values can be found by az login / az account get-access-token
 provider "azurerm" {
   version         = "=1.44.0"
-  client_id       = "${var.client_id}"
-  subscription_id = "${var.subscription_id}"
-  tenant_id       = "${var.tenant_id}"
+   client_id       = var.client_id
+   subscription_id = var.subscription_id
+   tenant_id       = var.tenant_id
 }
 
 #Random 5 char string appended to the end of each name to avoid conflicts
