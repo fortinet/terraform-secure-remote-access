@@ -2,9 +2,9 @@
 # Values can be found by az login / az account get-access-token
 provider "azurerm" {
   version         = "=1.44.0"
-  client_id       = "${var.client_id}"
-  subscription_id = "${var.subscription_id}"
-  tenant_id       = "${var.tenant_id}"
+   client_id       = var.client_id
+   subscription_id = var.subscription_id
+   tenant_id       = var.tenant_id
 }
 
 #Random 5 char string appended to the end of each name to avoid conflicts
@@ -12,6 +12,17 @@ resource "random_string" "random_name_post" {
   length           = 5
   special          = true
   override_special = ""
+  min_lower        = 5
+}
+resource "random_string" "random_psk_key" {
+  length           = 16
+  special          = false
+  override_special = ""
+  min_lower        = 5
+}
+resource "random_string" "random_pass" {
+  length           = 10
+  special          = true
   min_lower        = 5
 }
 resource "azurerm_resource_group" "resource_group" {
@@ -74,13 +85,12 @@ resource "azurerm_virtual_machine" "fgt-hub" {
   os_profile {
     computer_name  = "FortiGateSecureAccess"
     admin_username = var.admin_name
-    admin_password = var.admin_password
+    admin_password = var.admin_password == "" ? random_string.random_pass.result : var.admin_password
     custom_data    = data.template_file.setupFortiGate.rendered
   }
   os_profile_linux_config {
     disable_password_authentication = false
   }
-
 }
 resource "azurerm_public_ip" "public_ip" {
   name                = "PublicIPForFortiGate"
@@ -92,16 +102,18 @@ resource "azurerm_public_ip" "public_ip" {
 output "ResourceGroup" {
   value = azurerm_resource_group.resource_group.name
 }
+output "PskKey" {
+  value = data.template_file.setupFortiGate.vars.psk_key
+}
 output "PublicIP" {
   value = "${join("", list("https://", "${azurerm_public_ip.public_ip.ip_address}", ":8443"))}"
 }
 output "AdminPassword" {
-  value = var.admin_password
+  value = var.admin_password == "" ? random_string.random_pass.result : var.admin_password
 }
 output "AdminName" {
   value = var.admin_name
 }
-
 output "EasyKey" {
   value       = base64encode("${data.template_file.easy_key_setup.rendered}")
   description = "Use this key to in the Spoke setup to generate the VPN config."

@@ -1,3 +1,4 @@
+
 variable "client_id" {
   type = string
 }
@@ -7,15 +8,15 @@ variable "subscription_id" {
 variable "tenant_id" {
   type = string
 }
-variable "region" {
-  type = string
-}
-variable "cluster_name" {
-  type = string
-}
-variable "admin_name" {
-  type = string
-}
+ variable "region" {
+   type = string
+ }
+ variable "cluster_name" {
+   type = string
+ }
+ variable "admin_name" {
+   type = string
+ }
 variable "admin_password" {
   type = string
 }
@@ -86,4 +87,3 @@ variable "fgt_product" {
 variable "fgt_version" {
   type = string
 }
-

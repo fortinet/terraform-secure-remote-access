@@ -1,7 +1,8 @@
 #Terraform State and vars
 terraform
 .terraform*
-terraform.*
+terraform.tfstate
+terraform.tfstate.backup
 crash.log
 #Local dev
 .exampleOutputs
