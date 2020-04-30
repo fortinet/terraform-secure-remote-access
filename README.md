@@ -32,7 +32,7 @@ Once the Terraform deployment is complete, follow the steps below to attach the 
 
 ### Authentication:
 
-1.Under **Remote IP Address** enter the Public IP address of the FortiGate you deployed. You can find this value in the outputs. You can also run `terraform output` in the deployment folder to see the results again.
+1. Under **Remote IP Address** enter the Public IP address of the FortiGate you deployed. You can find this value in the outputs. You can also run `terraform output` in the deployment folder to see the results again.
 
 2. The **Outgoing interface** should adjust automatically based on the **Remote IP address** entered.
 3. Enter the **Pre-shared key**. This can be found in the vars.tf file under `psk_key`.
@@ -61,6 +61,48 @@ For <i>EasyKey</i> setup, only the Pre-shared key needs to be entered.
 2. Select the new VPN and bring up the connection.
 
    ![FortiOS Admin Profile](./imgs/bring_up_phase_selectors.png)
+
+#SSL VPN Users/Groups creation and configuration guide
+
+### Create a new local user
+> This section will showcase how to create new local user on FortiOS GUI
+
+1. Go to User & Device > User Definition from the navbar
+2. Click `Create New`
+
+![Create New Local User](./imgs/create_new_user.png) 
+
+3. Select `Local User`
+4. Set up Credentials for the user
+5. Add `Email address` _(optional)
+6. Click `Submit` to create user
+
+
+### Create a new User Group
+> This section will showcase how to create a new user group on FortiOS GUI
+
+1. Go to User & Device > User Groups from the navbar
+2. Click `Create New`
+
+![Create New User Group](./imgs/user_group_selection.png)
+
+3. Select Type `Firewall`
+4. Type in the name of the group and select members
+
+![User Group Selection](./imgs/user_group_selection.png)  
+
+5. Hit `OK` to create User Group
+
+### Adding User/User Group to SSL VPN Policy
+> This section will showcase how to add User/User Groups to SSL VPN Policy
+
+1. Set up a name for the Policy(if not editing). <br>
+2. Incoming Interface should be **SSL-VPN tunnel interface (ssl.root)**
+3. Select desired Outgoing interface
+4. In Sources select addresses and switch to `User` tab to select User and/or User group 
+5. Select Destination and Service and then hit `OK` to create/edit policy 
+
+![Policy Settings](./imgs/policy_user_selection.png)
 
 # Support
 
