@@ -17,7 +17,7 @@ The default admin username and password can be found in vars.tf under `admin_nam
 <i>Note: <b>EasyKey</b> from the output will contain configuration that can be applied to Spoke VPN devices for ease of configuration. </i>
 
 # Spoke FortiGate Setup
-
+  
 Once the Terraform deployment is complete, follow the steps below to attach the spoke to the FortiGate Hub
 
 1. Navigate to your spoke FortiGate and open **VPN > IPsec Wizard**.
