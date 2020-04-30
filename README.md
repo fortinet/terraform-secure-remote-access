@@ -70,7 +70,7 @@ For <i>EasyKey</i> setup, only the Pre-shared key needs to be entered.
 1. Go to User & Device > User Definition from the navbar
 2. Click `Create New`
 
-![Create New Local User](./imgs/create_new_user.png) 
+  ![Create New Local User](./imgs/create_new_user.png) 
 
 3. Select `Local User`
 4. Set up Credentials for the user
@@ -84,12 +84,12 @@ For <i>EasyKey</i> setup, only the Pre-shared key needs to be entered.
 1. Go to User & Device > User Groups from the navbar
 2. Click `Create New`
 
-![Create New User Group](./imgs/user_group_selection.png)
+  ![Create New User Group](./imgs/user_group_selection.png)
 
 3. Select Type `Firewall`
 4. Type in the name of the group and select members
 
-![User Group Selection](./imgs/user_group_selection.png)  
+  ![User Group Selection](./imgs/user_group_selection.png)  
 
 5. Hit `OK` to create User Group
 
@@ -102,7 +102,7 @@ For <i>EasyKey</i> setup, only the Pre-shared key needs to be entered.
 4. In Sources select addresses and switch to `User` tab to select User and/or User group 
 5. Select Destination and Service and then hit `OK` to create/edit policy 
 
-![Policy Settings](./imgs/policy_user_selection.png)
+  ![Policy Settings](./imgs/policy_user_selection.png)
 
 # Support
 
