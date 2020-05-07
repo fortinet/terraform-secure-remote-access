@@ -32,7 +32,7 @@ Once the Terraform deployment is complete, follow the steps below to attach the 
 
 ### Authentication
 
-1. Under **Remote IP Address** enter the Public IP address of the FortiGate you deployed. You can find this value in the outputs. You can also run `terraform output` in the deployment folder to see the results again.
+1. Under **Remote IP Address** enter the Public IP address of the FortiGate you deployed.<br>You can find this value in the outputs. Run `terraform output` in the deployment folder to see the results again.
 
 2. The **Outgoing interface** should adjust automatically based on the **Remote IP address** entered.
 3. Enter the **Pre-shared key**. This can be found in the vars.tf file under `psk_key`.
