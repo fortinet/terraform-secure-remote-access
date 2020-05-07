@@ -35,7 +35,7 @@ Once the Terraform deployment is complete, follow the steps below to attach the 
 1. Under **Remote IP Address** enter the Public IP address of the FortiGate you deployed.<br>You can find this value in the outputs. Run `terraform output` in the deployment folder to see the results again.
 
 2. The **Outgoing interface** should adjust automatically based on the **Remote IP address** entered.
-3. Enter the **Pre-shared key**. This can be found in the vars.tf file under `psk_key`.
+3. Enter the **Pre-shared key**. This can be found in the `vars.tf` file under `psk_key`.
 
 For <i>EasyKey</i> setup, only the Pre-shared key needs to be entered.
 
@@ -65,17 +65,17 @@ For <i>EasyKey</i> setup, only the Pre-shared key needs to be entered.
 #SSL VPN Users/Groups creation and configuration guide
 
 ### Create a new local user
-> This section will showcase how to create new local user on FortiOS GUI
+> These steps are performed on the FortiOS GUI.
 
-1. Go to User & Device > User Definition from the navbar
-2. Click `Create New`
+1. On the navigation bar, select **User & Device > User Definition**.
+2. Click **Create New**:
 
   ![Create New Local User](./imgs/create_new_user.png) 
 
-3. Select `Local User`
-4. Set up Credentials for the user
-5. Add `Email address` _(optional)
-6. Click `Submit` to create user
+3. Select **Local User**.
+4. Set up credentials for the user.
+5. (Optional) Add an **Email address**.
+6. Click **Submit**.
 
 
 ### Create a new User Group
