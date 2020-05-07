@@ -14,11 +14,11 @@ To navigate to your deployed FortiGate use the Public IP address and the default
 
 The default admin username and password can be found in vars.tf under `admin_name` and `admin_password`. <br>
 
-<i>Note: <b>EasyKey</b> from the output will contain configuration that can be applied to Spoke VPN devices for ease of configuration. </i>
+> **Note:** For ease of configuration, search for **EasyKey** in the output. It will contain configuration that can be applied to Spoke VPN devices.
 
 # Spoke FortiGate Setup
   
-Once the Terraform deployment is complete, follow the steps below to attach the spoke to the FortiGate Hub
+Once the Terraform deployment is complete, follow the steps below to attach the spoke to the FortiGate hub.
 
 1. Navigate to your spoke FortiGate and open **VPN > IPsec Wizard**.
 2. Enter a **Name** for the spoke.
@@ -30,7 +30,7 @@ Once the Terraform deployment is complete, follow the steps below to attach the 
 
 ![FortiOS Admin Profile](./imgs/easy_key.png)
 
-### Authentication:
+### Authentication
 
 1. Under **Remote IP Address** enter the Public IP address of the FortiGate you deployed. You can find this value in the outputs. You can also run `terraform output` in the deployment folder to see the results again.
 
