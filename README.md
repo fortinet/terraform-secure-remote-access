@@ -79,28 +79,29 @@ For <i>EasyKey</i> setup, only the Pre-shared key needs to be entered.
 
 
 ### Create a new User Group
-> This section will showcase how to create a new user group on FortiOS GUI
+> These steps are performed on the FortiOS GUI.
 
-1. Go to User & Device > User Groups from the navbar
-2. Click `Create New`
+1. On the navigation bar, select **User & Device > User Groups**.
+2. Click **Create New**:
 
   ![Create New User Group](./imgs/user_group_selection.png)
 
-3. Select Type `Firewall`
-4. Type in the name of the group and select members
+3. Under **Type**, select **Firewall**.
+4. Enter the name of the group and select members:
 
   ![User Group Selection](./imgs/user_group_selection.png)  
 
-5. Hit `OK` to create User Group
+5. Click **OK**.
 
-### Adding User/User Group to SSL VPN Policy
-> This section will showcase how to add User/User Groups to SSL VPN Policy
+### Adding a User/User Group to the SSL VPN Policy
+> These steps are performed on the FortiOS GUI.
 
-1. Set up a name for the Policy(if not editing). <br>
-2. Incoming Interface should be **SSL-VPN tunnel interface (ssl.root)**
-3. Select desired Outgoing interface
-4. In Sources select addresses and switch to `User` tab to select User and/or User group 
-5. Select Destination and Service and then hit `OK` to create/edit policy 
+1. Enter a **Name** for the policy (if not editing).
+2. The **Incoming Interface** should be **SSL-VPN tunnel interface (ssl.root)**.
+3. Select the desired **Outgoing interface**.
+4. Under **Sources**, select addresses and on the **User** tab select the **User** and/or **User group**. 
+5. Select a **Destination** and **Service**.
+6. Click **OK**.
 
   ![Policy Settings](./imgs/policy_user_selection.png)
 
