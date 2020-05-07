@@ -62,7 +62,7 @@ For <i>EasyKey</i> setup, only the Pre-shared key needs to be entered.
 
    ![FortiOS Admin Profile](./imgs/bring_up_phase_selectors.png)
 
-#SSL VPN Users/Groups creation and configuration guide
+# SSL VPN Users/Groups creation and configuration guide
 
 ### Create a new local user
 > These steps are performed on the FortiOS GUI.
