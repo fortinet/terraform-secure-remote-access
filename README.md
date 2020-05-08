@@ -97,7 +97,7 @@ For <i>EasyKey</i> setup, only the Pre-shared key needs to be entered.
 > These steps are performed on the FortiOS GUI.
 
 1. On the navigation bar, select **VPN > SSL-VPN Settings**.
-2. At the bottom of **SSL-VPN Settings** page, there is a table to assign **User** and/or **User group** to specific portals to use.
+2. At the bottom of the **SSL-VPN Settings** page, there is a table to assign a **User** and/or **User group** to specific portals.
 
   ![SSL VPN Settings >Portal ](./imgs/ssl_vpn_portal_user_selection.png)
 
