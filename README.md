@@ -105,7 +105,7 @@ For <i>EasyKey</i> setup, only the Pre-shared key needs to be entered.
 
   ![Portal & User/Group Selection](./imgs/ssl_vpn_portal_user_selection_slide_out.png)
 
-4. Select **User** and/or **User group**.
+4. Select a **User** and/or **User group**.
 5. Select **Portal**.
 6. Click **OK**.
 
