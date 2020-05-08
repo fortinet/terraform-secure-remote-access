@@ -93,37 +93,39 @@ For <i>EasyKey</i> setup, only the Pre-shared key needs to be entered.
 
 5. Click **OK**.
 
-### Add User/User Group to SSL VPN Portal Settings Authentication & Portal Mapping
+### Add a user/user group to Authentication/Portal Mapping
 > These steps are performed on the FortiOS GUI.
 
-1. At the bottom of **SSL-VPN Settings** page, there is a table to assign **User** and/or **User group** to specific portals to use.
+1. On the navigation bar, select **VPN > SSL-VPN Settings**.
+2. At the bottom of **SSL-VPN Settings** page, there is a table to assign **User** and/or **User group** to specific portals to use.
 
   ![SSL VPN Settings >Portal ](./imgs/ssl_vpn_portal_user_selection.png)
 
-2. Click **Create New** :
+3. Click **Create New** :
 
   ![Portal & User/Group Selection](./imgs/ssl_vpn_portal_user_selection_slide_out.png)
 
-3. Select **User** and/or **User group**.
-4. Select **Portal**.
-5. Click **OK**.
+4. Select **User** and/or **User group**.
+5. Select **Portal**.
+6. Click **OK**.
 
 ### Adding a User/User Group to the SSL VPN Policy
 > These steps are performed on the FortiOS GUI.
 
-1. Enter a **Name** for the policy (if not editing).
-2. The **Incoming Interface** should be **SSL-VPN tunnel interface (ssl.root)**.
-3. Select the desired **Outgoing interface**.
-4. Under **Sources**, select addresses and on the **User** tab select the **User** and/or **User group**. 
-5. Select a **Destination** and **Service**.
-6. Click **OK**.
+1. On the navigation bar, select **Policy & Objects > IPv4 Policy**.
+2. Enter a **Name** for the policy (if not editing).
+3. The **Incoming Interface** should be **SSL-VPN tunnel interface (ssl.root)**.
+4. Select the desired **Outgoing interface**.
+5. Under **Sources**, select addresses and on the **User** tab select the **User** and/or **User group**. 
+6. Select a **Destination** and **Service**.
+7. Click **OK**.
 
   ![Policy Settings](./imgs/policy_user_selection.png)
 
 # Support
 
 Fortinet-provided scripts in this and other GitHub projects do not fall under the regular Fortinet technical support scope and are not supported by FortiCare Support Services.
-For direct issues, please refer to the [Issues](https://github.com/fortinet/terraform-secure-remote-access/issues) tab of this GitHub project.
+For direct issues, please refer to the [Issues](https://github.com/fortinet/terraform-secure-remote-access-beta/issues) tab of this GitHub project.
 For other questions related to this project, contact [github@fortinet.com](mailto:github@fortinet.com).
 
 ## License
